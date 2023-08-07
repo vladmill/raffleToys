@@ -11,7 +11,7 @@ public class ItemRaffle extends ItemMenu{
     }
 
     @Override
-    public void execute() throws IOException {
+    public void execute() throws IOException, ClassNotFoundException {
         super.getView().raffle();
     }
 }

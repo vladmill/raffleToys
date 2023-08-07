@@ -21,7 +21,7 @@ public class Menu {
         this.items.add(new ItemFinish(view));
     }
 
-    public void execute(int choice) throws IOException {
+    public void execute(int choice) throws IOException, ClassNotFoundException {
         items.get(choice - 1).execute();
     }
 

@@ -16,12 +16,17 @@ public class Model {
         this.fh = new Filehandler(this);
         //this.toyshop = new Toyshop<>(new ArrayList<>());
         this.toyshop = fh.loadToyshop() != null ? fh.loadToyshop() : new Toyshop<>(new ArrayList<>());
+        Toy.setCounter(this.toyshop.getToys().size());
         this.prizeList = new ArrayList<>();
 
     }
 
     public Toyshop<Toy> getToyshop() {
         return toyshop;
+    }
+
+    public List<Toy> getPrizeList() {
+        return prizeList;
     }
 
     public List<Toy> getToys() {
@@ -45,7 +50,7 @@ public class Model {
         fh.saveToyshop();
     }
 
-    public Toy raffle () throws IOException {
+    public Toy raffle () throws IOException, ClassNotFoundException {
             int totalWT = 0;
             for (Toy toy : getToys()) {
                 totalWT += toy.getWt();
@@ -56,12 +61,15 @@ public class Model {
                 sumWT += toy.getWt();
                 if (randomWeight <= sumWT) {
                     prizeList.add(toy);
+                    fh.savePrize();
                     toy.setQuantity(toy.getQuantity() - 1);
                     fh.saveToyshop();
                     return toy;
                 }
             }
             return null;
-
+    }
+    public List<Toy> getPrizes() throws IOException, ClassNotFoundException {
+        return fh.loadPrize();
     }
 }

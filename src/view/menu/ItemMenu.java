@@ -24,5 +24,5 @@ public abstract class ItemMenu {
         this.description = description;
     }
 
-    public abstract void execute() throws IOException;
+    public abstract void execute() throws IOException, ClassNotFoundException;
 }

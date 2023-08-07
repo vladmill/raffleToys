@@ -29,7 +29,10 @@ public class Presenter {
         model.editWT(id, wt);
     }
 
-    public Toy raffle() throws IOException {
+    public Toy raffle() throws IOException, ClassNotFoundException {
         return model.raffle();
+    }
+    public List<Toy> getPrizes() throws IOException, ClassNotFoundException {
+        return model.getPrizes();
     }
 }

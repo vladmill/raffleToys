@@ -33,7 +33,7 @@ public class ViewConsole implements View {
     }
 
     @Override
-    public void start() throws IOException {
+    public void start() throws IOException, ClassNotFoundException {
         while (work) {
             menu.printMenu();
             String input = scan();
@@ -78,13 +78,15 @@ public class ViewConsole implements View {
     }
 
     @Override
-    public void raffle() throws IOException {
+    public void raffle() throws IOException, ClassNotFoundException {
         System.out.println(presenter.raffle());
     }
 
     @Override
-    public void showPrizes() {
-
+    public void showPrizes() throws IOException, ClassNotFoundException {
+        for (Toy toy: presenter.getPrizes()) {
+            System.out.println(toy);
+        }
     }
 
     @Override
